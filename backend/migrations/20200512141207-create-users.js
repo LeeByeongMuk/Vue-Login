@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      login_id: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false
@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      user_name: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false
       },
