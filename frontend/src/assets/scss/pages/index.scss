@@ -4,6 +4,37 @@
 
 @import '../components/_form';
 
+.home-container{
+    .info-wrap{
+        @include margin(top 40px);
+    }
+
+    .info-group{
+        @include margin(top 15px);
+        overflow: hidden;
+        line-height: 24px;
+
+        p{
+            @include margin(top 8px);
+            font-size: 18px;
+        }
+    }
+
+    .btn-wrap{
+        @include margin(top 20px);
+        overflow: hidden;
+        text-align: center;
+
+        .btn-logout{
+            @include button(blue-fill);
+            @include size(auto, 40px);
+            @include padding(0 20px);
+            display: inline-block;
+            line-height: 40px;
+        }
+    }
+}
+
 .account-form{
     @include form();
 }

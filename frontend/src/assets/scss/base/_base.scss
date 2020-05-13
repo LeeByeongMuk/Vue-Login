@@ -10,7 +10,23 @@ body{
     justify-content: center;
 }
 
-.main{
+.main > article,
+main > section{
+    @include size($screen-size);
+    @include margin(0 auto);
+    @include padding(25px);
+    @include box-sizing(border-box);
+    background: $white;
+}
+
+h1{
+    font-weight: bold;
+    font-size: $font-size-base * 2.5;
+}
+
+h2{
+    font-weight: bold;
+    font-size: $font-size-base * 1.5;
 }
 
 .hidden{
