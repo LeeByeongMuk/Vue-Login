@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const models = require('./models/index.js');
 
-const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
 const app = express();
 // view engine setup
@@ -19,9 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/api', usersRouter);
 
-
+// model sequelize
 models.sequelize.sync().then(() => {
   console.log(" DB 연결 성공");
 }).catch(err => {
