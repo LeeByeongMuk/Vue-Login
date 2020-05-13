@@ -3,19 +3,9 @@
 @import '../helpers/_mixins';
 
 @import '../components/_input';
+@import '../components/_button';
 
 %form-default{
-    @include size($screen-size);
-    @include margin(0 auto);
-    @include padding(25px);
-    @include box-sizing(border-box);
-    background: $white;
-
-    h1{
-        font-weight: bold;
-        font-size: $font-size-base * 2.5;
-    }
-
     form{
         @include margin(top 40px);
 
@@ -35,12 +25,11 @@
         }
 
         .btn-submit{
-            @include input();
+            @include button(blue-fill);
             @include size(auto, 40px);
             @include padding(0 20px);
             float: left;
-            background: $blue;
-            color: $white;
+            line-height: 40px;
         }
 
         .btn-link{

@@ -1,0 +1,25 @@
+@import '../helpers/_variables';
+@import '../helpers/_extends';
+@import '../helpers/_mixins';
+
+%button-default{
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+    @include border(0);
+    @include border-radius(4px);
+    display: block;
+    text-decoration: none;
+}
+
+%btn-blue{
+    background: $blue;
+    color: $white;
+}
+
+@mixin button($type: null) {
+    @extend %button-default;
+
+    @if $type == blue-fill {
+        @extend %btn-blue;
+    }
+}
