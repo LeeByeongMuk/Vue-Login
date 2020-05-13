@@ -1,9 +1,16 @@
 body{
-    background-color: $bg-color-white;
+    display: flex;
+    min-height: 100vh;
+    background-color: $page-color;
     font-family: Helvetica,"Malgun Gothic","Apple SD Gothic Neo",AppleGothic,Dotum,Arial,Tahoma;
-    font-size: 18px;
+    font-size: $font-size-base;
     line-height: 1;
     color: $light-black;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
 }
 
 .hidden{

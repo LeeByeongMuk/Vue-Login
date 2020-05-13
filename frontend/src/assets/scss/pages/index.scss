@@ -2,24 +2,8 @@
 @import '../helpers/_extends';
 @import '../helpers/_mixins';
 
-.main{
-    @include size(width 100% min $screen-size);
-}
+@import '../components/_form';
 
-.container{
-    @include size($screen-size);
-    @include margin(0 auto);
-    @include padding(25px 0);
-    overflow: hidden;
-}
-
-.ranking-area{
-    @include size(750px);
-    float: left;
-    overflow: hidden;
-}
-
-.notice-area{
-    @include size(400px);
-    float: right;
+.account-form{
+    @include form();
 }
