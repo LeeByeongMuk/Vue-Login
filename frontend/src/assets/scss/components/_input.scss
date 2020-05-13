@@ -1,0 +1,15 @@
+@import '../helpers/_variables';
+@import '../helpers/_extends';
+@import '../helpers/_mixins';
+
+%input-default{
+    @include padding(0 12px);
+    @include border(1px solid $border-color-base);
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+    display: block;
+}
+
+@mixin input() {
+    @extend %input-default;
+}

@@ -1,0 +1,49 @@
+@import '../helpers/_variables';
+@import '../helpers/_extends';
+@import '../helpers/_mixins';
+
+@import '../components/_input';
+
+%form-default{
+    @include size($screen-size);
+    @include margin(0 auto);
+    @include padding(25px);
+    @include box-sizing(border-box);
+    background: $white;
+
+    h1{
+        font-weight: bold;
+        font-size: $font-size-base * 2.5;
+    }
+
+    form{
+        @include margin(top 40px);
+
+        .form-group{
+            @include margin(top 15px);
+        }
+
+        .form-group input{
+            @include input();
+            @include size(100%, 35px);
+        }
+
+        .btn-wrap{
+            @include margin(top 25px);
+            overflow: hidden;
+        }
+
+        .btn-submit{
+            @include input();
+            @include size(auto, 40px);
+            @include padding(0 20px);
+            background: $blue;
+            color: $white;
+        }
+
+    }
+}
+
+@mixin form() {
+    @extend %form-default;
+}
