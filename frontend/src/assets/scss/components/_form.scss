@@ -31,16 +31,23 @@
         .btn-wrap{
             @include margin(top 25px);
             overflow: hidden;
+            line-height: 40px;
         }
 
         .btn-submit{
             @include input();
             @include size(auto, 40px);
             @include padding(0 20px);
+            float: left;
             background: $blue;
             color: $white;
         }
 
+        .btn-link{
+            @extend %reset-hover;
+            float: right;
+            color: $blue;
+        }
     }
 }
 
