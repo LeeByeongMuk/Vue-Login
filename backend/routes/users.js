@@ -1,24 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const model = require('../models/users.js');
+const models = require("../models");
 const crypto = require('crypto');
 
 router.post('/register', function (req, res) {
-    const hash = crypto.createHash('sha512')
-        .update(req.body.user.passowrd)
+    const hash = crypto.createHmac('sha512', 'secret')
+        .update(req.body.user.password)
         .digest('base64');
 
-    let result = model.create({
+    models.users.create({
         login_id: req.body.user.id,
-        password: hash,
-        name: req.body.user.name
-    });
-
-    console.log(result);
-
-    return res.json({
-        'status': 200,
-        'message': '회원가입 되었습니다.'
+        name: req.body.user.name,
+        password: hash
+    }).then(result => {
+        res.json({
+            status: 200,
+            message: '회원가입 되었습니다.'
+        });
+    }).catch(error => {
+        res.json({
+            status: 400,
+            err: error
+        })
     });
 });
 
