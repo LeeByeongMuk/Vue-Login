@@ -19,8 +19,8 @@ router.post('/register', function (req, res) {
         });
     }).catch(error => {
         res.json({
-            status: 400,
-            err: error
+            status: 200,
+            message: '중복된 아이디 입니다'
         })
     });
 });
