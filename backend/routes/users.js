@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const models = require("../models");
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
 router.post('/register', function (req, res) {
     const hash = crypto.createHmac('sha512', 'secret')
@@ -24,5 +25,41 @@ router.post('/register', function (req, res) {
         })
     });
 });
+
+router.post('/login', function (req, res) {
+    const privateKey = 'secret';
+    const body = req.body;
+    const hash = crypto.createHmac('sha512', 'secret')
+        .update(body.user.password)
+        .digest('base64');
+
+    const token = jwt.sign({
+        login_id: body.user.id
+    }, privateKey, {
+        expiresIn: '1h'
+    }, (err, token) => {
+        console.log(token);
+    });
+
+    models.users.findOne({
+        where: {
+            login_id: body.user.id
+        }
+    }).then(result => {
+        if (findUser.dataValues.password == hash) {
+            res.json({
+                message: '로그인 되었습니다.'
+            });
+        } else {
+            res.json({
+                message: '회원정보가 없습니다.'
+            });
+        }
+    }).catch(error => {
+        res.json({
+            message: '회원정보가 없습니다.'
+        });
+    });
+})
 
 module.exports = router;
