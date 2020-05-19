@@ -33,30 +33,33 @@ router.post('/login', function (req, res) {
         .update(body.user.password)
         .digest('base64');
 
-    const token = jwt.sign({
-        login_id: body.user.id
-    }, privateKey, {
-        expiresIn: '1h'
-    }, (err, token) => {
-        console.log(token);
-    });
-
     models.users.findOne({
         where: {
             login_id: body.user.id
         }
     }).then(result => {
-        if (findUser.dataValues.password == hash) {
-            res.json({
-                message: '로그인 되었습니다.'
+        if (result.dataValues.password == hash) {
+            let token = jwt.sign({
+                login_id: result.login_id,
+                name: result.name
+            }, privateKey, {
+                expiresIn: '1h'
+            }, (err, token) => {
+                res.json({
+                    token: token,
+                    status: 200,
+                    message: '로그인 되었습니다.'
+                });
             });
         } else {
             res.json({
-                message: '회원정보가 없습니다.'
+                status: 200,
+                message: '비밀번호가 틀렸습니다.'
             });
         }
     }).catch(error => {
         res.json({
+            status: 200,
             message: '회원정보가 없습니다.'
         });
     });
