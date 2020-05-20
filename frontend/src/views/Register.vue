@@ -16,7 +16,7 @@
             <div class="btn-wrap">
                 <input type="submit" class="btn-submit" value="Register">
                 <router-link class="btn-link"
-                    to="/login">back</router-link>
+                             to="/login">back</router-link>
             </div>
         </form>
     </article>
