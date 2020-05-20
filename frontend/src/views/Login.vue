@@ -32,15 +32,22 @@ export default {
     },
     methods: {
         login () {
+            if (this.user.id == '') {
+                return alert('아이디를 입력해주세요.');
+            }
+
+            if(this.user.password == '') {
+                return alert('비밀번호를 입력해주세요');
+            }
+
             this.axios.post('/api/login', {
                 user: this.user
             }).then(res => {
+                alert(res.data.message);
+
                 if (res.data.status == 200) {
-                    alert(res.data.message);
                     this.$store.commit('loginToken', res.data.token);
                     this.$router.push('/');
-                } else {
-                    alert('오류');
                 }
             }).catch(err => {
                 console.log(err);

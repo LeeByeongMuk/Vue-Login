@@ -53,13 +53,13 @@ router.post('/login', function (req, res) {
             });
         } else {
             res.json({
-                status: 200,
+                status: 400,
                 message: '비밀번호가 틀렸습니다.'
             });
         }
     }).catch(error => {
         res.json({
-            status: 200,
+            status: 400,
             message: '회원정보가 없습니다.'
         });
     });
