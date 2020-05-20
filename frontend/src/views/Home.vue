@@ -18,7 +18,11 @@
         </div>
 
         <div class="btn-wrap">
-            <a href="#" class="btn-logout" v-if="user">Logout</a>
+            <a href="#" class="btn-logout"
+               v-if="user"
+               @click="logout">
+               Logout
+           </a>
             <router-link to="/login" class="btn-logout"
                          v-else>
                 Login
@@ -44,6 +48,13 @@ export default {
             if (this.$store.state.token) {
                 return JSON.parse(atob(this.$store.state.token.split('.')[1]));
             }
+        }
+    },
+    methods: {
+        logout () {
+            this.$store.commit('logout');
+            this.user = '';
+            alert('로그아웃 되었습니다.');
         }
     }
 }

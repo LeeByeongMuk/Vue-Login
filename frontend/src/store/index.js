@@ -11,11 +11,14 @@ export default new Vuex.Store({
         })
     ],
     state: {
-      token: ''
+        token: ''
     },
     mutations: {
         loginToken (state, token) {
             state.token = token;
+        },
+        logout (state) {
+            state.toten = '';
         }
     },
     actions: {
