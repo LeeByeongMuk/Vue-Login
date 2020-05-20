@@ -32,7 +32,19 @@ export default {
     },
     methods: {
         login () {
-            console.log('login');
+            this.axios.post('/api/login', {
+                user: this.user
+            }).then(res => {
+                if (res.data.status == 200) {
+                    alert(res.data.message);
+                    this.$store.commit('loginToken', res.data.token);
+                    this.$router.push('/');
+                } else {
+                    alert('오류');
+                }
+            }).catch(err => {
+                console.log(err);
+            })
         }
     }
 }
