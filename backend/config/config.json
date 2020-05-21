@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "$manso1007",
-    "database": "manso_table",
+    "password": "password",
+    "database": "table",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
