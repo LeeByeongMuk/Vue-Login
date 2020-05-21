@@ -39,11 +39,10 @@ export default {
             this.axios.post('/api/register', {
                 user: this.user
             }).then(res => {
+                alert(res.data.message);
+
                 if (res.data.status === 200) {
-                    alert(res.data.message);
                     this.$router.push('/login');
-                } else {
-                    alert('오류');
                 }
             }).catch(err =>{
                 console.log(err);
