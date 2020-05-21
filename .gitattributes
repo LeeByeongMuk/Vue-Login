@@ -1,2 +1,2 @@
-frontend linguist-vendored
-backend linguist-vendored
+frontend/* linguist-vendored
+backend/* linguist-vendored
